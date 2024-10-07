@@ -1,0 +1,7 @@
+services:
+  curl:
+    image: curlimages/curl:latest
+    profiles:
+      - debug
+    entrypoint: ["curl"]
+    restart: no

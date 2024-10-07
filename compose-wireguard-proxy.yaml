@@ -1,0 +1,40 @@
+services:
+  adguardhome:
+    extends:
+      file: adguardhome/compose.yaml
+      service: adguardhome
+    network_mode: service:wireguard
+
+  gluetun:
+    extends:
+      file: gluetun/compose.yaml
+      service: gluetun
+    environment:
+      - TZ=America/Los_Angeles
+      - HTTPPROXY=on
+      - HTTPPROXY_LISTENING_ADDRESS=0.0.0.0:8888
+      - HTTPPROXY_STEALTH=on
+    networks:
+      - services_backend
+
+  nebula:
+    extends:
+      file: nebula/compose.yaml
+      service: nebula
+    network_mode: service:wireguard
+
+  wireguard:
+    extends:
+      file: linuxserver.io/wireguard/compose.yaml
+      service: wireguard
+    networks:
+      - services_backend
+
+  uptime:
+    extends:
+      file: uptime-kuma/compose.yaml
+      service: uptime-kuma
+    network_mode: service:wireguard
+
+networks:
+  services_backend:

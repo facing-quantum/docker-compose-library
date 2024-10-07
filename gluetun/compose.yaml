@@ -1,0 +1,21 @@
+services:
+  gluetun:
+    image: qmcgaw/gluetun:latest
+    labels:
+      - com.centurylinklabs.watchtower.enable=true
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun:/dev/net/tun
+    environment:
+      - HTTP_CONTROL_SERVER_ADDRESS=0.0.0.0:80
+    sysctls:
+      - net.ipv6.conf.all.disable_ipv6=0
+    restart: on-failure
+
+  gluetun-update:
+    image: qmcgaw/gluetun:latest
+    entrypoint: /bin/sh
+    restart: no
+    profiles:
+      - utility

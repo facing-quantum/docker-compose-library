@@ -1,0 +1,6 @@
+services:
+  uptime-kuma:
+    image: louislam/uptime-kuma:alpine
+    labels:
+      - com.centurylinklabs.watchtower.enable=true
+    restart: on-failure

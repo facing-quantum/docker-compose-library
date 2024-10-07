@@ -1,0 +1,9 @@
+services:
+  nebula:
+    image: nebula:latest
+    build: .
+    cap_add:
+      - NET_ADMIN
+    volumes:
+      - ./config:/config:ro
+    restart: on-failure

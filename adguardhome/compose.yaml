@@ -1,0 +1,6 @@
+services:
+  adguardhome:
+    image: adguard/adguardhome:latest
+    labels:
+      - com.centurylinklabs.watchtower.enable=true
+    restart: on-failure
