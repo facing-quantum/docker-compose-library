@@ -1,0 +1,6 @@
+services:
+  webtop:
+    extends:
+      file: ../_common/compose.yaml
+      service: linuxserver-common
+    image: lscr.io/linuxserver/webtop:latest
