@@ -4,6 +4,12 @@ services:
       file: adguardhome/compose.yaml
       service: adguardhome
     network_mode: service:wireguard
+    command: "
+      --no-check-update 
+      -c /opt/adguardhome/conf/AdGuardHome.yaml
+      -w /opt/adguardhome/work
+      -p 8080
+    "
 
   gluetun:
     extends:
@@ -21,6 +27,12 @@ services:
     extends:
       file: nebula/compose.yaml
       service: nebula
+    network_mode: service:wireguard
+
+  nginx:
+    extends:
+      file: linuxserver.io/nginx/compose.yaml
+      service: nginx
     network_mode: service:wireguard
 
   wireguard:
