@@ -8,7 +8,7 @@ ADD https://github.com/slackhq/nebula/releases/latest/download/nebula-$BUILDOS-$
 RUN tar -zxf /nebula-$BUILDOS-$BUILDARCH.tar.gz
 
 # Final Stage
-FROM gcr.io/distroless/static:latest
+FROM gcr.io/distroless/static:debug
 
 COPY --from=build /nebula /nebula-cert /
 
