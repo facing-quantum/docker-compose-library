@@ -3,4 +3,6 @@ services:
     image: adguard/adguardhome:latest
     labels:
       - com.centurylinklabs.watchtower.enable=true
-    restart: on-failure
+    restart: unless-stopped
+    cap_add:
+      - NET_ADMIN

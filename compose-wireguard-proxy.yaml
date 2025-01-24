@@ -5,7 +5,7 @@ services:
       service: adguardhome
     network_mode: service:wireguard
     command: "
-      --no-check-update 
+      --no-check-update
       -c /opt/adguardhome/conf/AdGuardHome.yaml
       -w /opt/adguardhome/work
       -p 8080

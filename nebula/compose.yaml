@@ -6,4 +6,4 @@ services:
       - NET_ADMIN
     volumes:
       - ./config:/config:ro
-    restart: on-failure
+    restart: unless-stopped

@@ -7,4 +7,4 @@ services:
       - TZ=America/Los_Angeles  # Specify a timezone to use EG Europe/London.
       - PUID=1026               # ID of user to take ownership of application/files
       - PGID=101                # GID of user to take ownership of application/files
-    restart: on-failure
+    restart: unless-stopped
