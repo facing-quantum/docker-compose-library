@@ -3,7 +3,7 @@ services:
     image: docker:cli
     network_mode: none
     volumes: [ "/var/run/docker.sock:/var/run/docker.sock" ]
-    command: [ "/bin/sh", "-c", "while true; do sleep 60; docker ps -q -f health=unhealthy | xargs --no-run-if-empty docker restart; done" ]
+    command: [ "/bin/sh", "-c", "while true; do sleep 60; docker ps -f health=unhealthy --format '{{.Names}}' | xargs -n1 --no-run-if-empty docker restart; done" ]
     restart: unless-stopped
     cap_drop:
       - ALL
